@@ -9,6 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
         Berke Ozten
         Halyna
+        Mario
     </parent>
     <groupId>com.example</groupId>
     <artifactId>BarHop</artifactId>

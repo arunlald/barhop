@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+body { 
+	background-color: #453966;
+}
+#container{
+    max-width: 70%;
+    height: auto;
+    margin: auto;
+    border: 2px solid rgba(50, 50, 200, 0.5);
+    background-color: rgba(188, 216, 229, 0.5);
+    padding: 1em;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    float: left;
+}
+
+.header1{
+    width: 40%;
+    color:white;
+}
+
+h1{
+    color:white;
+    text-align: left;
+    border-color: #8FA5CE;
+    text-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.header_partners{
+    float: right;  
+}
+
+.block_register{
+    display:flex;
+    justify-content: space-between;
+}
+.main1{
+    float:left;
+    width: 50%;
+    color:white;
+}
+
+form {
+    min-width: 200px;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 10px;
+    max-width: 500px;
+    float:right;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+#mySignUp{
+    width: 70%;
+    background-color: rgb(61, 61, 200);
+    color:white;
+    font-size: 24px;
+    border-radius: 20px;
+    margin: 10px 0px;
+}
+
+#myLogIn{
+    width: 70%;
+    background-color: rgb(61, 61, 200);
+    color:white;
+    font-size: 24px;
+    border-radius: 20px;
+    margin: 10px 0px;
+}
+
+.iconblock{
+    margin-top:20px;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block{
+    text-align: center;
+    margin:10px 10px;
+    padding: 20px;
+}
+
+.bottomblock{
+    background-color: #b6b8fc;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding:20px;
+    margin-top:20px;
+}
+
+.orderblock{
+    margin-top:20px;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    text-align: center;
+    padding-top:20px;
+}
+
+.readyorderblock{
+    margin-top:20px;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    padding-top:20px;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    padding-top:20px;
+}
+
+.ready_search{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top:20px;
+    margin-left: 50px;
+}
+
+input,
+textarea {
+    margin-top: 30px;
+    display: block;
+}
+
+.people{
+    display:flex;
+}
+
+.city{
+    display:flex;
+}
+
+.date{
+    display:flex;
+}
+
+#myCity{
+    margin-top:0px;
+    height:20px;
+    margin-left: 20px;
+}
+
+#myDate{
+    margin-top:0px;
+    height:20px;
+    margin-right: 20px;
+}
+
+.deals{
+    margin-top:20px;
+    width: 100%;
+    height: auto;
+    display:flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.deals2{
+    margin-top:20px;
+    width: 100%;
+    height: auto;
+    display:flex;
+    flex-direction: column; 
+}
+
+.deal{
+    flex: 1 0 25%;
+    padding:30px;
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.deal2{
+    padding:30px;
+    display:flex;
+    justify-content:left;
+}
+
+.payblock{
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 24px;
+}
+
+.membership{
+    background-color: white;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 24px;
+}
+
+.activedealblock{
+    background-color: #b6b8fc;
+    width:100%;
+    height:auto;
+    padding-top: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.activedeal{
+    display:flex;
+    flex-direction: row;
+    margin-left: 50px;
+    text-align: center;
+}
+
+label {
+    float: left;
+    width: 200px;
+    clear: both;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 30px;
+}
+
+#mySubmit {
+    margin-left: 210px;
+}

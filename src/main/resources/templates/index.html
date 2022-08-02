@@ -274,18 +274,18 @@
             </div>
     
             <div class="main2">
-              <form method="get">
+              <form method="get" th:action="@{/login}">
                 <h2 style="text-align: center;">Sign In & Browse Bar Deals</h2>
                 <hr>
     
-                <label for="myEmail">E-mail:</label>
-                <input type="email" name="myEmail" id="myEmail" placeholder="Email address" th:attr="value = ${mail}">
+                <label>E-mail:</label>
+                <input type="email" name="mail"  placeholder="Email address" th:attr="value = ${mail}">
     
-                <label for="myPassword">Password:</label>
-                <input type="password" name="myPassword" id="myPassword" placeholder="Password" th:attr="value = ${password}">
+                <label>Password:</label>
+                <input type="password" name="password" placeholder="Password" th:attr="value = ${password}">
 
 
-                <button id="myLogIn" type="button" value="Log in">Log in</button>
+                <button id="myLogIn" type="submit" value="Log in">Log in</button>
                 <hr>
                 <label style="align-self: center">or</label>
                 <hr>

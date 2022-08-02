@@ -1,6 +1,8 @@
 package com.example.barhop;
 
+import com.example.barhop.entities.BarAndDeal;
 import com.example.barhop.entities.Customer;
+import com.example.barhop.repositories.BarAndDealRepository;
 import com.example.barhop.repositories.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,4 +28,15 @@ public class BarHopApplication {
         };
     }
      */
+
+/*
+    @Bean
+    CommandLineRunner commandLineRunner(BarAndDealRepository barAndDealRepository) {
+        return args -> {
+            barAndDealRepository.save(new BarAndDeal(null, "Bar1", "10 percent off", "New Westminister", "somewhere around NW"));
+            barAndDealRepository.save(new BarAndDeal(null, "Bar2", "11 percent off", "New Westminister", "somewhere around NW2"));
+            barAndDealRepository.save(new BarAndDeal(null, "Bar3", "10 percent off", "Burnaby", "somewhere around Burnaby"));
+        };
+    }
+*/
 }

@@ -279,15 +279,12 @@
 
             <div class="search">
                 <div class="people"> <img th:src="@{/users.png}" alt="picture of people" width=30 height=30 ></div>
-                <div class="city"> 
+                <div class="city">
                     <img th:src="@{/map.png}" alt="pointer for the map" width=30 height=30 >
-                    <input type="text" name="myCity" id="myCity" placeholder="City" required>
+                    <form method="get" th:action="@{searchCity}"><label>City</label> <input type="text" name="city">
+                        <button type="submit" class="btn-primary">Search</button></form>
                 </div>
-                <div class="date">
-                    <input type="date" name="myDate" id="myDate"> 
-                    <img th:src="@{/calendar.png}" alt="calendar" width=30 height=30 >
-                </div>
-                <div> <button>Search</button> </div>
+
             </div>
 
             <div class="deals">

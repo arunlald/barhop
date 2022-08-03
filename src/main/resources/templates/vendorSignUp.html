@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--/*@thymesVar id="bootVersion" type="java.lang.String"*/-->
+<!--/*@thymesVar id="activeProfiles" type="java.lang.String"*/-->
+<!--/*@thymesVar id="serverToDeployments" type="java.util.Map<java.lang.String,java.util.List<ch.mobi.liima.client.dto.Deployment>>"*/-->
+<!--/*@thymesVar id="utils" type="ch.package.controller.util.SomeUtils"*/-->
 <head>
   <meta charset="utf-8">
   <title>Barhop</title>
@@ -66,7 +70,7 @@
       text-align: center;
     }
 
-    .mySignUp{
+    #mySignUp{
       width: 70%;
       background-color: rgb(61, 61, 200);
       color:white;
@@ -253,6 +257,7 @@
     }
 
   </style>
+
 </head>
 <body>
     <div id="container">
@@ -269,34 +274,47 @@
       <main>
         <div class="block_register">
           <div class="main1"><h1>Gather your friends and family and enjoy our exclusive crawls!</h1>
-            <p>Hello friends! Barhop is inviting you to join us in order to get a chance to get nice delas and have a good time at night. There are bars which you can search for if you already know one. There is an easy interface in order to find a location where you prefer to hang out. Register on our Barhop web-site and let's begin!
+            <p>Hello friends! Barhop is inviting you to join us in order to get a chance to get nice deals and have a good time at night. There are bars which you can search for if you already know one. There is an easy interface in order to find a location where you prefer to hang out. Register on our Barhop web-site and let's begin!
                 Are you a vendor and want to get more clients? Here we are! Register and add your deals! Create your account for your bars and post your discounts at any time!</p>
             </div>
-    
+
             <div class="main2">
-              <form method="get" th:action="@{/login}">
-                <h2 style="text-align: center;">Sign In & Browse Bar Deals</h2>
-                <hr>
-    
-                <label>E-mail:</label>
-                <input type="email" name="mail"  placeholder="Email address" th:attr="value = ${mail}">
-    
-                <label>Password:</label>
-                <input type="password" name="password" placeholder="Password" th:attr="value = ${password}">
 
-                <br>
-                <select name="type">
-                  <option value="customer">Customer</option>
-                  <option value="vendor">Vendor</option>
-                </select>
-                <br>
+              <h2 style="text-align: center;">Vendor Sign Up</h2>
+              <hr>
+              <form method="post" th:action="@{saveVendor}">
 
-                <button id="myLogIn" type="submit" value="Log in">Log in</button>
-                <hr>
-                <label style="align-self: center">or</label>
-                <hr>
-                <button class="mySignUp" type="button" value="Sign Up" th:onclick="|window.location.href ='@{/signUp}'|">Sign Up</button>
-                <button class="mySignUp" type="button" value="Sign Up" th:onclick="|window.location.href ='@{/vendorSignUp}'|">Are you a Vendor looking to join us?</button>
+
+                  <label>First Name:</label>
+                  <input type="text" placeholder="Your first name" required name="first_name" th:value ="${vendor.first_name}">
+                  <span th:errors="${vendor.first_name}"></span>
+
+
+
+
+                  <label>Last Name:</label>
+                  <input type="text" placeholder="Your last name" required name="last_name" th:value="${vendor.last_name}">
+                  <span th:errors="${vendor.last_name}"></span>
+
+
+
+
+                  <label>E-mail:</label>
+                  <input type="email" placeholder="Your email address" name="mail" th:value="${vendor.mail}">
+                  <span th:errors="${vendor.mail}"></span>
+
+
+
+
+                  <label>Password:</label>
+                  <input type="password" placeholder="Pick a password" name="password" th:value="${vendor.password}">
+                  <span th:errors="${vendor.password}"></span>
+
+
+                <p>Use at least one letter, one numeral, and seven characters</p>
+
+
+                <button id="mySignUp" type="submit" value="Sign Up" th:href="@{/saveVendor}">Sign Up</button>
               </form>
             </div>
         </div>

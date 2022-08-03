@@ -3,17 +3,266 @@
 <head>
   <meta charset="utf-8">
   <title>Barhop</title>
-  <link rel="stylesheet" href="styles.css">
+
   <link rel="icon" href="images/logo.png" type="image/png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+        html{
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            background-color: #453966;
+        }
+        #container{
+            max-width: 70%;
+            height: auto;
+            margin: auto;
+            border: 2px solid rgba(50, 50, 200, 0.5);
+            background-color: rgba(188, 216, 229, 0.5);
+            padding: 1em;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            float: left;
+        }
+
+        .header1{
+            width: 40%;
+            color:white;
+        }
+
+        h1{
+            color:white;
+            text-align: left;
+            border-color: #8FA5CE;
+            text-shadow: 5px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .header_partners{
+            float: right;
+        }
+
+        .block_register{
+            display:flex;
+            justify-content: space-between;
+        }
+        .main1{
+            float:left;
+            width: 50%;
+            color:white;
+        }
+
+        form {
+            min-width: 200px;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            max-width: 500px;
+            float:right;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        #mySignUp{
+            width: 70%;
+            background-color: rgb(61, 61, 200);
+            color:white;
+            font-size: 24px;
+            border-radius: 20px;
+            margin: 10px 0px;
+        }
+
+        #myLogIn{
+            width: 70%;
+            background-color: rgb(61, 61, 200);
+            color:white;
+            font-size: 24px;
+            border-radius: 20px;
+            margin: 10px 0px;
+        }
+
+        .iconblock{
+            margin-top:20px;
+            background-color: white;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .block{
+            text-align: center;
+            margin:10px 10px;
+            padding: 20px;
+        }
+
+        .bottomblock{
+            background-color: #b6b8fc;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding:20px;
+            margin-top:20px;
+        }
+
+        .orderblock{
+            margin-top:20px;
+            background-color: white;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            text-align: center;
+            padding-top:20px;
+        }
+
+        .readyorderblock{
+            margin-top:20px;
+            background-color: white;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            padding-top:20px;
+        }
+        .search{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            text-align: center;
+            padding-top:20px;
+        }
+
+        .ready_search{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            padding-top:20px;
+            margin-left: 50px;
+        }
+
+        input,
+        textarea {
+            margin-top: 30px;
+            display: block;
+        }
+
+        .people{
+            display:flex;
+        }
+
+        .city{
+            display:flex;
+        }
+
+        .date{
+            display:flex;
+        }
+
+        #myCity{
+            margin-top:0px;
+            height:20px;
+            margin-left: 20px;
+        }
+
+        #myDate{
+            margin-top:0px;
+            height:20px;
+            margin-right: 20px;
+        }
+
+        .deals{
+            margin-top:20px;
+            width: 100%;
+            height: auto;
+            display:flex;
+            flex-wrap: wrap;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .deals2{
+            margin-top:20px;
+            width: 100%;
+            height: auto;
+            display:flex;
+            flex-direction: column;
+        }
+
+        .deal{
+            flex: 1 0 25%;
+            padding:30px;
+            /* display: flex; */
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .deal2{
+            padding:30px;
+            display:flex;
+            justify-content:left;
+        }
+
+        .payblock{
+            background-color: white;
+            border-radius: 20px;
+            padding-left: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .membership{
+            background-color: white;
+            border-radius: 20px;
+            padding-left: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .activedealblock{
+            background-color: #b6b8fc;
+            width:100%;
+            height:auto;
+            padding-top: 20px;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .activedeal{
+            display:flex;
+            flex-direction: row;
+            margin-left: 50px;
+            text-align: center;
+        }
+
+        label {
+            float: left;
+            width: 200px;
+            clear: both;
+            text-align: right;
+            padding-right: 10px;
+            margin-top: 30px;
+        }
+
+        #mySubmit {
+            margin-left: 210px;
+        }
+
+    </style>
 </head>
 <body>
     <div id="container">
       <header>
         <div class="header1">
-          <h1><img src="images/logo.png" alt="Bunny with beer" width=50 height=50 >Barhop</h1> 
+          <h1><img th:src="@{/logo.png}" alt="Bunny with beer" width=50 height=50 >Barhop</h1>
         </div>
         <div class="header_partners">
-          <h3>Name<img src="images/user.png" alt="User image" width=80 height=40 ></h3>
+          <h3><h3 th:text="${ActiveVendor.first_name}"></h3><img th:src="@{/user.png}" alt="User image" width=80 height=40 ></h3>
         </div>
       </header>
       <hr>
@@ -21,7 +270,7 @@
       <main>
         <div class="barname"><h1>Bar name</h1>
             <div class="city"> 
-                <img src="images/map.png" alt="pointer for the map" width=30 height=30 style="padding-right:20px;">
+                <img th:src="@{/map.png}" alt="pointer for the map" width=30 height=30 style="padding-right:20px;">
                 <p>Vancouver, BC</p>
             </div>
         <div class="block_register">
@@ -29,7 +278,7 @@
             </div>
     
                 <div class="membership">
-                    <img src="images/letter-m.png" alt="capital letter m" width=30 height=30 style="padding-right:20px;">
+                    <img th:src="@{/letter-m.png}" alt="capital letter m" width=30 height=30 style="padding-right:20px;">
                     <p></p>Membership: Active</p>
                     <p>Expiration: 08 / 08 / 2022</p>
                     <button>Renew Now</button>
@@ -40,7 +289,7 @@
             <h2>Active Deals</h2>
             <div class="activedeal"> 
                 <div class="active_deal">
-                    <div class="image"><img src="images/square.png" alt="square" width=50 height=50 ></div>
+                    <div class="image"><img th:src="@{/square.png}" alt="square" width=50 height=50 ></div>
                     <h2><b>Deal Summary</b></h2>
                     <p>Information about the deal: date, location,<br> details about the deal.</p>
                     <p>Edit</p>

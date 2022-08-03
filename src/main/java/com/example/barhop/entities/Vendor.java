@@ -1,6 +1,5 @@
 package com.example.barhop.entities;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +10,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BarAndDeal {
+public class Vendor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String first_name;
+    private String last_name;
+    private String mail;
+    private String password;
     private String bar_name;
-    private String deal;
-    private String city;
-    private String address;
-    private String bar_owner_mail;
 }
-

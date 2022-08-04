@@ -40,7 +40,7 @@ public class CustomerController {
     @GetMapping(path = "/signUp")
     public String signUp(Model model) {
         model.addAttribute("customer", new Customer());
-        return "signUp";
+        return "customerSignUp";
     }
 
     @GetMapping(path = "/vendorSignUp")
@@ -53,7 +53,7 @@ public class CustomerController {
     public String save(Model model, Customer customer, BindingResult bindingResult, ModelMap mm, HttpSession session) {
 
         if (bindingResult.hasErrors()) {
-            return "signUp";
+            return "customerSignUp";
         } else {
 
             customerRepository.save(customer);
@@ -66,6 +66,18 @@ public class CustomerController {
 
         if (bindingResult.hasErrors()) {
             return "vendorSignUp";
+        } else {
+
+            vendorRepository.save(vendor);
+            return "redirect:index";
+        }
+    }
+
+    @PostMapping(path = "/newDeal")
+    public String uploadDeal(Model model, Vendor vendor, BindingResult bindingResult, ModelMap mm, HttpSession session) {
+
+        if (bindingResult.hasErrors()) {
+            return "vendorDealUpload";
         } else {
 
             vendorRepository.save(vendor);
@@ -135,4 +147,5 @@ public class CustomerController {
         model.addAttribute("listBarAndDeals", barAndDealList);
         return "order";
     }
+
 }

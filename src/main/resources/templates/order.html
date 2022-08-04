@@ -295,15 +295,19 @@
                     <h2><b th:text="${bar.getBar_name()}"></b></h2>
                     <i th:text="${bar.getDeal()}"></i>
                     <p th:text="${bar.getAddress()}"></p>
-                    <button>Add</button>
-                  </div>
+                    <form method="get" th:action="@{addBar}">
+                        <button type="submit" name="bar" th:value="${bar.getBar_name()}" class="btn-primary">Add</button></form>
+                    <form method="get" th:action="@{removeBar}">
+                        <button type="submit" name="bar" th:value="${bar.getBar_name()}" class="btn-primary">Remove</button></form>
+                </div>
             </div>
  
         </div>
 
         <div class="bottomblock">
-          <div class="title">Total: $20.00</div>
-            <button>Checkout</button>
+          <div class="title">Total: $<b id="total" th:text="${tempOrder.getCost()}"></b></div>
+            <form method="get" th:action="@{checkout}">
+                <button type="submit" name="bar" class="btn-primary">Checkout</button></form>
         </div>
     </main>
     

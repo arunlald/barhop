@@ -1,10 +1,12 @@
 package com.example.barhop.web;
 
 import com.example.barhop.entities.Customer;
+import com.example.barhop.entities.OrderList;
 import com.example.barhop.entities.Vendor;
 import com.example.barhop.repositories.CustomerRepository;
 import com.example.barhop.entities.BarAndDeal;
 import com.example.barhop.repositories.BarAndDealRepository;
+import com.example.barhop.repositories.OrderListRepository;
 import com.example.barhop.repositories.VendorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@SessionAttributes({"ActiveCustomer","ActiveVendor"})
+@SessionAttributes({"ActiveCustomer","ActiveVendor","OrderId"})
 @Controller
 @AllArgsConstructor
 public class CustomerController {
@@ -31,6 +34,13 @@ public class CustomerController {
 
     @Autowired
     private VendorRepository vendorRepository;
+
+    @Autowired
+    private OrderListRepository orderListRepository;
+
+    static OrderList tempOrder;
+    static List<BarAndDeal> listBarAndDeals;
+
 
     @GetMapping(path = "/index")
     public String customer() {
@@ -90,8 +100,17 @@ public class CustomerController {
                     if (tempCustomer != null){
                         if (password.equals(tempCustomer.getPassword())){
                             mm.put("ActiveCustomer", tempCustomer);
-                            List<BarAndDeal> listBarAndDeals = barAndDealRepository.findAll();
+                            listBarAndDeals = barAndDealRepository.findAll();
                             model.addAttribute("listBarAndDeals", listBarAndDeals);
+
+                            tempOrder = new OrderList();
+                            tempOrder.setMail(mail);
+                            tempOrder.setBar_list("");
+                            tempOrder.setNumber_of_bars(0);
+                            tempOrder.setDate(new Date());
+
+                            model.addAttribute("tempOrder", tempOrder);
+
                             return "order";
                         }else {
                             // Password not correct
@@ -105,7 +124,7 @@ public class CustomerController {
                     if (tempVendor != null){
                         if (password.equals(tempVendor.getPassword())){
                             mm.put("ActiveVendor", tempVendor);
-                            List<BarAndDeal> listBarAndDeals = barAndDealRepository.findAll();
+                            listBarAndDeals = barAndDealRepository.findAll();
                             model.addAttribute("listBarAndDeals", listBarAndDeals);
                             return "vendor_page";
                         }else {
@@ -123,16 +142,42 @@ public class CustomerController {
         return "index";
     }
 
+    @GetMapping(path = "/addBar")
+    public String addBar(Model model,  ModelMap mm, @RequestParam(name = "bar") String bar) {
+
+
+        tempOrder.addBar(bar);
+        model.addAttribute("tempOrder", tempOrder);
+        model.addAttribute("listBarAndDeals", listBarAndDeals);
+        return "order";
+    }
+
+    @GetMapping(path = "/removeBar")
+    public String removeBar(Model model,  ModelMap mm, @RequestParam(name = "bar") BarAndDeal bar) {
+        tempOrder.removeBar(bar.getBar_name());
+        model.addAttribute("tempOrder", tempOrder);
+        model.addAttribute("listBarAndDeals", listBarAndDeals);
+        return "order";
+    }
+
     @GetMapping(path = "/searchCity")
     public String searchCity(Model model,  ModelMap mm, @RequestParam(name = "city", defaultValue = "") String city) {
 
-        List<BarAndDeal> barAndDealList;
+
         if (city.isEmpty()) {
-            barAndDealList = barAndDealRepository.findAll();
+            listBarAndDeals = barAndDealRepository.findAll();
         } else {
-            barAndDealList = barAndDealRepository.findBarAndDealByCity(city);
+            listBarAndDeals = barAndDealRepository.findBarAndDealByCity(city);
         }
-        model.addAttribute("listBarAndDeals", barAndDealList);
+        model.addAttribute("listBarAndDeals", listBarAndDeals);
         return "order";
     }
+
+    @GetMapping(path = "/checkout")
+    public String checkout(Model model,  ModelMap mm) {
+
+        orderListRepository.save(tempOrder);
+        return "order";
+    }
+
 }

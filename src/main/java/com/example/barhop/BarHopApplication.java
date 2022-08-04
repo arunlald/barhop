@@ -2,9 +2,11 @@ package com.example.barhop;
 
 import com.example.barhop.entities.BarAndDeal;
 import com.example.barhop.entities.Customer;
+import com.example.barhop.entities.OrderList;
 import com.example.barhop.entities.Vendor;
 import com.example.barhop.repositories.BarAndDealRepository;
 import com.example.barhop.repositories.CustomerRepository;
+import com.example.barhop.repositories.OrderListRepository;
 import com.example.barhop.repositories.VendorRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -48,4 +50,13 @@ public class BarHopApplication {
         };
     }
 */
+/*
+    @Bean
+    CommandLineRunner commandLineRunner(OrderRepository orderRepository) {
+        return args -> {
+            orderRepository.save(new Order("berkeozten@gmail.com", "Bar1,Bar2"));
+        };
+    }
+
+ */
 }

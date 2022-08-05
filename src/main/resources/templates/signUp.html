@@ -281,7 +281,6 @@
             <div class="main2">
 
               <h2 style="text-align: center;">Sign Up & Browse Bar Deals</h2>
-                <h4 style="color: crimson; font-weight: bold" th:text="${loginMessage}">Please Try Again.</h4>
               <hr>
               <form method="post" th:action="@{save}">
 
@@ -313,6 +312,10 @@
 
 
                 <p>Use at least one letter, one numeral, and seven characters</p>
+
+                  <br>
+                  <h4 style="color: crimson; font-weight: bold" th:text="${loginMessage}">Please Try Again.</h4>
+                  <br>
 
                 <button id="mySignUp" type="submit" value="Sign Up" th:href="@{/save}">Sign Up</button>
               </form>

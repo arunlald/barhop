@@ -50,13 +50,5 @@ public class BarHopApplication {
         };
     }
 */
-/*
-    @Bean
-    CommandLineRunner commandLineRunner(OrderRepository orderRepository) {
-        return args -> {
-            orderRepository.save(new Order("berkeozten@gmail.com", "Bar1,Bar2"));
-        };
-    }
 
- */
 }

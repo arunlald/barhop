@@ -8,5 +8,7 @@ import java.util.List;
 public interface BarAndDealRepository extends JpaRepository<BarAndDeal,Long>{
     List<BarAndDeal> findBarAndDealByCity (String loc);
     BarAndDeal findBarAndDealByBarName (String bar);
+
+    List<BarAndDeal> findBarAndDealByBarOwnerMail (String loc);
 }
 

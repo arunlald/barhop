@@ -20,7 +20,7 @@ public class BarAndDeal {
     private String deal;
     private String city;
     private String address;
-    private String bar_owner_mail;
+    private String barOwnerMail;
 
 }
 

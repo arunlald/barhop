@@ -41,10 +41,12 @@ public class CustomerController {
 
     static OrderList tempOrder;
     static List<BarAndDeal> listBarAndDeals;
+    static String activeUserMail;
 
 
     @GetMapping(path = "/index")
     public String customer() {
+        activeUserMail = "";
         return "index";
     }
 
@@ -56,6 +58,8 @@ public class CustomerController {
 
     @GetMapping(path = "/vendorSignUp")
     public String vendorSignUp(Model model) {
+
+
         model.addAttribute("vendor", new Vendor());
         return "vendorSignUp";
     }
@@ -63,6 +67,11 @@ public class CustomerController {
     @PostMapping(path = "/save")
     public String save(Model model, Customer customer, BindingResult bindingResult, ModelMap mm, HttpSession session) {
 
+        if(customerRepository.findCustomerByMail(customer.getMail()) != null){
+            model.addAttribute("customer", new Customer());
+            model.addAttribute("loginMessage", "This mail is already in use.");
+            return "signUp";
+        }
         if (bindingResult.hasErrors()) {
             return "signUp";
         } else {
@@ -74,6 +83,12 @@ public class CustomerController {
 
     @PostMapping(path = "/saveVendor")
     public String saveVendor(Model model, Vendor vendor, BindingResult bindingResult, ModelMap mm, HttpSession session) {
+
+        if(vendorRepository.findVendorByMail(vendor.getMail()) != null){
+            model.addAttribute("vendor", new Vendor());
+            model.addAttribute("loginMessage", "This mail is already in use.");
+            return "vendorSignUp";
+        }
 
         if (bindingResult.hasErrors()) {
             return "vendorSignUp";
@@ -103,6 +118,7 @@ public class CustomerController {
                     tempCustomer = customerRepository.findCustomerByMail(mail);
                     if (tempCustomer != null){
                         if (password.equals(tempCustomer.getPassword())){
+
                             mm.put("ActiveCustomer", tempCustomer);
                             listBarAndDeals = barAndDealRepository.findAll();
                             model.addAttribute("listBarAndDeals", listBarAndDeals);
@@ -114,6 +130,7 @@ public class CustomerController {
                             tempOrder.setDate(new Date());
 
                             model.addAttribute("tempOrder", tempOrder);
+                            activeUserMail = mail;
 
                             return "order";
                         }else {
@@ -129,9 +146,10 @@ public class CustomerController {
                     tempVendor = vendorRepository.findVendorByMail(mail);
                     if (tempVendor != null){
                         if (password.equals(tempVendor.getPassword())){
+
                             mm.put("ActiveVendor", tempVendor);
-                            listBarAndDeals = barAndDealRepository.findAll();
-                            model.addAttribute("listBarAndDeals", listBarAndDeals);
+                            activeUserMail = mail;
+                            model.addAttribute("listBarAndDeals", barAndDealRepository.findBarAndDealByBarOwnerMail(activeUserMail));
                             return "vendor_page";
                         }else {
                             model.addAttribute("loginMessage", "The Password You Entered Is Incorrect. Please Try Again.");
@@ -207,12 +225,14 @@ public class CustomerController {
     @PostMapping(path = "/saveDeal")
     public String saveDeal(Model model, BarAndDeal barAndDeal, BindingResult bindingResult, ModelMap mm, HttpSession session) {
 
+        barAndDeal.setBarOwnerMail(activeUserMail);
         if (bindingResult.hasErrors()) {
             return "vendorDealUpload";
         } else {
 
             barAndDealRepository.save(barAndDeal);
-            return "redirect:index";
+            model.addAttribute("listBarAndDeals", barAndDealRepository.findBarAndDealByBarOwnerMail(activeUserMail));
+            return "vendor_page";
         }
     }
 

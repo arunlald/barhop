@@ -287,11 +287,11 @@
 
         <div class="activedealblock">
             <h2>Active Deals</h2>
-            <div class="activedeal"> 
-                <div class="active_deal">
+            <div class="activedeal" >
+                <div class="active_deal" th:each="bar:${listBarAndDeals}">
                     <div class="image"><img th:src="@{/square.png}" alt="square" width=50 height=50 ></div>
-                    <h2><b>Deal Summary</b></h2>
-                    <p>Information about the deal: date, location,<br> details about the deal.</p>
+                    <h2><b th:text="${bar.getBarName()}"></b></h2>
+                    <p th:text="${bar.getDeal()}"></p>
                     <p>Edit</p>
                     <p>Remove</p>
                 </div>

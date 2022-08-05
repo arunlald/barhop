@@ -10,7 +10,7 @@
 
 
   <label>Bar Name:</label>
-  <input type="text" placeholder="Your bar name" required name="bar_name" th:value="${BarAndDeal.barName}">
+  <input type="text" placeholder="Your bar name" required name="barName" th:value="${BarAndDeal.barName}">
   <span th:errors="${BarAndDeal.barName}"></span>
 
 
@@ -32,9 +32,6 @@
   <input type="text" placeholder="address" name="address" th:value="${BarAndDeal.address}">
   <span th:errors="${BarAndDeal.address}"></span>
 
-  <label>Bar Owner Email:</label>
-  <input type="email" placeholder="email address" name="email_address" th:value="${BarAndDeal.bar_owner_mail}">
-  <span th:errors="${BarAndDeal.bar_owner_mail}"></span>
 
 
   <button id="uploadDeal" type="submit" value="Upload Deal" th:onclick="|window.location.href ='@{/saveDeal}'|">Upload Deal</button>

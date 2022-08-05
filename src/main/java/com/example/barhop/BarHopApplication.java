@@ -44,9 +44,9 @@ public class BarHopApplication {
     @Bean
     CommandLineRunner commandLineRunner(VendorRepository vendorRepository) {
         return args -> {
-            vendorRepository.save(new Vendor(null, "Berke", "Vendor", "boVendor2@gmail.com", "temp123", "Bar1"));
-            vendorRepository.save(new Vendor(null, "Berke2", "Vendor", "boVendor3@gmail.com", "temp123", "Bar2"));
-            vendorRepository.save(new Vendor(null, "Berke3", "Vendor", "boVendor4@gmail.com", "temp123", "Bar3"));
+            vendorRepository.save(new Vendor(null, "Berke", "Vendor", "boVendor2@gmail.com", "temp123"));
+            vendorRepository.save(new Vendor(null, "Berke2", "Vendor", "boVendor3@gmail.com", "temp123"));
+            vendorRepository.save(new Vendor(null, "Berke3", "Vendor", "boVendor4@gmail.com", "temp123"));
         };
     }
 */

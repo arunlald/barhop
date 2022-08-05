@@ -18,5 +18,4 @@ public class Vendor {
     private String last_name;
     private String mail;
     private String password;
-    private String bar_name;
 }

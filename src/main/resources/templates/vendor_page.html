@@ -249,6 +249,18 @@
             margin-top: 30px;
         }
 
+        .form3 {
+            min-width: 150px;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            margin-left: 10px;
+            max-width: 500px;
+            float:right;
+            border-radius: 20px;
+            text-align: center;
+        }
+
         #mySubmit {
             margin-left: 210px;
         }
@@ -266,17 +278,17 @@
         </div>
       </header>
       <hr>
-    
+
       <main>
         <div class="barname"><h1>Bar name</h1>
-            <div class="city"> 
+            <div class="city">
                 <img th:src="@{/map.png}" alt="pointer for the map" width=30 height=30 style="padding-right:20px;">
                 <p>Vancouver, BC</p>
             </div>
         <div class="block_register">
-          
+
             </div>
-    
+
                 <div class="membership">
                     <img th:src="@{/letter-m.png}" alt="capital letter m" width=30 height=30 style="padding-right:20px;">
                     <p></p>Membership: Active</p>
@@ -285,21 +297,21 @@
                 </div>
         </div>
 
-        <div class="activedealblock">
-            <h2>Active Deals</h2>
-            <div class="activedeal" >
-                <div class="active_deal" th:each="bar:${listBarAndDeals}">
-                    <div class="image"><img th:src="@{/square.png}" alt="square" width=50 height=50 ></div>
-                    <h2><b th:text="${bar.barName}"></b></h2>
-                    <p th:text="${bar.getDeal()}"></p>
-                    <form method="get" th:action="@{removeDeal}">
-                        <button type="submit" name="id" th:value="${bar.id}" class="btn-primary">Remove</button></form>
-                </div>
-                <button style="margin-left:50px; height:50px; margin-top: 100px;" th:onclick="|window.location.href ='@{/vendorDealUpload}'|">New Deal</button>
-            </div>
-        </div>
+          <div class="activedealblock">
+              <h2>Active Deals</h2>
+              <div class="activedeal" >
+                  <div class="active_deal" th:each="bar:${listBarAndDeals}">
+                      <div class="image"><img th:src="@{/square.png}" alt="square" width=50 height=50 ></div>
+                      <h2><b th:text="${bar.getBarName()}"></b></h2>
+                      <p th:text="${bar.getDeal()}"></p>
+                      <form class="form3" method="get" th:action="@{removeDeal}">
+                          <button type="submit" name="bar.id" class="btn-primary">Remove</button></form>
+                  </div>
+                  <button style="margin-left:50px; height:50px; margin-top: 100px;" th:onclick="|window.location.href ='@{/vendorDealUpload}'|">New Deal</button>
+              </div>
+          </div>
     </main>
-    
+
     </div>
 </body>
 </html>

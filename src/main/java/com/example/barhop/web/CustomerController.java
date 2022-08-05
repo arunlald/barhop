@@ -205,6 +205,7 @@ public class CustomerController {
         } else {
             listBarAndDeals = barAndDealRepository.findBarAndDealByCity(city);
         }
+        model.addAttribute("tempOrder", tempOrder);
         model.addAttribute("listBarAndDeals", listBarAndDeals);
         return "order";
     }

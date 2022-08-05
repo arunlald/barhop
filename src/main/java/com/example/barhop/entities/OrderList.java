@@ -33,17 +33,17 @@ public class OrderList {
     private int number_of_bars;
     private double cost;
 
+    private int quantity;
+
 
 
     public void calcCost(){
-        if (this.number_of_bars>2)
-            this.cost =  BigDecimal.valueOf(2.99 + ((this.number_of_bars-2)*0.99))
+        if (this.number_of_bars>=2)
+            this.cost =  BigDecimal.valueOf((2.99 + ((this.number_of_bars-2)*0.99))*this.quantity)
                     .setScale(3, RoundingMode.HALF_UP)
                     .doubleValue();
-        else if (this.number_of_bars < 2) {
+        else
             this.cost =  0.0;
-        }else
-            this.cost = 2.99;
     }
 
     public void addBar(String barName){

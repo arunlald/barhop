@@ -1,6 +1,8 @@
 
 package com.example.barhop.entities;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -35,7 +37,9 @@ public class OrderList {
 
     public void calcCost(){
         if (this.number_of_bars>2)
-            this.cost =  2.99 + ((this.number_of_bars-2)*0.99);
+            this.cost =  BigDecimal.valueOf(2.99 + ((this.number_of_bars-2)*0.99))
+                    .setScale(3, RoundingMode.HALF_UP)
+                    .doubleValue();
         else if (this.number_of_bars < 2) {
             this.cost =  0.0;
         }else

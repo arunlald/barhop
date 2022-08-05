@@ -292,13 +292,13 @@
 
                 <div class="deal" th:each="bar:${listBarAndDeals}">
                     <img th:src="@{/square.png}" alt="square" width=50 height=50 >
-                    <h2><b th:text="${bar.getBar_name()}"></b></h2>
+                    <h2><b th:text="${bar.getBarName()}"></b></h2>
                     <i th:text="${bar.getDeal()}"></i>
                     <p th:text="${bar.getAddress()}"></p>
                     <form method="get" th:action="@{addBar}">
-                        <button type="submit" name="bar" th:value="${bar.getBar_name()}" class="btn-primary">Add</button></form>
+                        <button type="submit" name="bar" th:value="${bar.getBarName()}" class="btn-primary">Add</button></form>
                     <form method="get" th:action="@{removeBar}">
-                        <button type="submit" name="bar" th:value="${bar.getBar_name()}" class="btn-primary">Remove</button></form>
+                        <button type="submit" name="bar" th:value="${bar.getBarName()}" class="btn-primary">Remove</button></form>
                 </div>
             </div>
  

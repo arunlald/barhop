@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Deals</title>
+</head>
+<h1>Upload Deals</h1>
+<body>
+<form method="post" th:action="@{saveDeal}">
+
+
+  <label>Bar Name:</label>
+  <input type="text" placeholder="Your bar name" required name="bar_name" th:value="${BarAndDeal.barName}">
+  <span th:errors="${BarAndDeal.barName}"></span>
+
+
+
+
+  <label>Deal:</label>
+  <input type="text" placeholder="deal" name="deal" th:value="${BarAndDeal.deal}">
+  <span th:errors="${BarAndDeal.deal}"></span>
+
+
+
+
+  <label>City:</label>
+  <input type="text" placeholder="city" name="city" th:value="${BarAndDeal.city}">
+  <span th:errors="${BarAndDeal.city}"></span>
+
+
+  <label>Address:</label>
+  <input type="text" placeholder="address" name="address" th:value="${BarAndDeal.address}">
+  <span th:errors="${BarAndDeal.address}"></span>
+
+  <label>Bar Owner Email:</label>
+  <input type="email" placeholder="email address" name="email_address" th:value="${BarAndDeal.bar_owner_mail}">
+  <span th:errors="${BarAndDeal.bar_owner_mail}"></span>
+
+
+  <button id="uploadDeal" type="submit" value="Upload Deal" th:onclick="|window.location.href ='@{/saveDeal}'|">Upload Deal</button>
+</form>
+
+</body>
+</html>

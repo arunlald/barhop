@@ -29,8 +29,8 @@ public class BarHopApplication {
         };
     }
 */
-/*
 
+/*
     @Bean
     CommandLineRunner commandLineRunner(BarAndDealRepository barAndDealRepository) {
         return args -> {

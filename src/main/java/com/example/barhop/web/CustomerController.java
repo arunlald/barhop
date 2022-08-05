@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -88,9 +89,12 @@ public class CustomerController {
 
 
         if (mail.isEmpty()) {
-            // mail area is empty
+            model.addAttribute("loginMessage", "Please Enter a Valid Email.");
+            return "index";
+
         } else if (password.isEmpty()){
-            // password area is empty
+            model.addAttribute("loginMessage", "Please Enter The Password.");
+            return "index";
         }
         else {
             try{
@@ -113,10 +117,12 @@ public class CustomerController {
 
                             return "order";
                         }else {
-                            // Password not correct
+                            model.addAttribute("loginMessage", "The Password You Entered Is Incorrect. Please Try Again.");
+                            return "index";
                         }
                     }
-                    // Mail doesnt exist
+                    model.addAttribute("loginMessage", "Your Email Was Incorrect. Please Try Again.");
+                    return "index";
                 }
                 else {
                     Vendor tempVendor;
@@ -128,14 +134,16 @@ public class CustomerController {
                             model.addAttribute("listBarAndDeals", listBarAndDeals);
                             return "vendor_page";
                         }else {
-                            // Password not correct
+                            model.addAttribute("loginMessage", "The Password You Entered Is Incorrect. Please Try Again.");
+                            return "index";
                         }
                     }
-                    // Mail doesnt exist
+                    model.addAttribute("loginMessage", "Your Email Was Incorrect. Please Try Again.");
+                    return "index";
                 }
 
             }catch (NoSuchElementException e){
-                // mail not correct or not in database
+                model.addAttribute("loginMessage", "This User does not exist!");
             }
         }
 
@@ -177,7 +185,35 @@ public class CustomerController {
     public String checkout(Model model,  ModelMap mm) {
 
         orderListRepository.save(tempOrder);
-        return "order";
+        model.addAttribute("tempOrder", tempOrder);
+        model.addAttribute("listBarAndDeals", getBar());
+        return "ready_order";
+    }
+
+    public List<BarAndDeal> getBar (){
+        List<BarAndDeal> returnList = new ArrayList<>();
+        for (String bar: tempOrder.convertToList()) {
+            returnList.add(barAndDealRepository.findBarAndDealByBarName(bar));
+        }
+        return returnList;
+    }
+
+    @GetMapping(path = "/vendorDealUpload")
+    public String vendorDealUpload(Model model) {
+        model.addAttribute("BarAndDeal", new BarAndDeal());
+        return "vendorDealUpload";
+    }
+
+    @PostMapping(path = "/saveDeal")
+    public String saveDeal(Model model, BarAndDeal barAndDeal, BindingResult bindingResult, ModelMap mm, HttpSession session) {
+
+        if (bindingResult.hasErrors()) {
+            return "vendorDealUpload";
+        } else {
+
+            barAndDealRepository.save(barAndDeal);
+            return "redirect:index";
+        }
     }
 
 }

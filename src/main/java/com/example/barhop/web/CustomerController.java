@@ -236,4 +236,13 @@ public class CustomerController {
         }
     }
 
+    @PostMapping(path = "/removeDeal")
+    public String removeDeal(Model model, @RequestParam(name = "bar", defaultValue = "") BarAndDeal deal, BindingResult bindingResult, ModelMap mm, HttpSession session) {
+
+        barAndDealRepository.delete(deal);
+        model.addAttribute("listBarAndDeals", barAndDealRepository.findBarAndDealByBarOwnerMail(activeUserMail));
+        return "vendor_page";
+
+    }
+
 }

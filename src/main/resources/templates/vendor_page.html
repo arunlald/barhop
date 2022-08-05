@@ -292,8 +292,10 @@
                     <div class="image"><img th:src="@{/square.png}" alt="square" width=50 height=50 ></div>
                     <h2><b th:text="${bar.getBarName()}"></b></h2>
                     <p th:text="${bar.getDeal()}"></p>
-                    <p>Edit</p>
-                    <p>Remove</p>
+                    <form method="get" th:action="@{editDeal}">
+                        <button type="submit" name="bar.id" class="btn-primary">Edit</button></form>
+                    <form method="get" th:action="@{removeDeal}">
+                        <button type="submit" name="bar.id" class="btn-primary">Remove</button></form>
                 </div>
                 <button style="margin-left:50px; height:50px; margin-top: 100px;" th:onclick="|window.location.href ='@{/vendorDealUpload}'|">New Deal</button>
             </div>

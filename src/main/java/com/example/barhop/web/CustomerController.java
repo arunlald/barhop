@@ -153,8 +153,8 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/removeBar")
-    public String removeBar(Model model,  ModelMap mm, @RequestParam(name = "bar") BarAndDeal bar) {
-        tempOrder.removeBar(bar.getBar_name());
+    public String removeBar(Model model,  ModelMap mm, @RequestParam(name = "bar") String bar) {
+        tempOrder.removeBar(bar);
         model.addAttribute("tempOrder", tempOrder);
         model.addAttribute("listBarAndDeals", listBarAndDeals);
         return "order";

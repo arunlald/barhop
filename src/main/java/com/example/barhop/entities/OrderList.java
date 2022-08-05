@@ -36,7 +36,7 @@ public class OrderList {
     public void calcCost(){
         if (this.number_of_bars>2)
             this.cost =  2.99 + ((this.number_of_bars-2)*0.99);
-        else if (this.number_of_bars == 0) {
+        else if (this.number_of_bars < 2) {
             this.cost =  0.0;
         }else
             this.cost = 2.99;
@@ -58,9 +58,8 @@ public class OrderList {
     }
 
     public void removeBar(String barName){
-        ArrayList<String> tempList;
-        if (number_of_bars != 0){
-            tempList = convertToList();
+        ArrayList<String> tempList = convertToList();
+        if (tempList.contains(barName)){
             tempList.remove(barName);
             number_of_bars = tempList.size();
             calcCost();

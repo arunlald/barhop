@@ -274,9 +274,9 @@
                 <p>Vancouver, BC</p>
             </div>
         <div class="block_register">
-          
+
             </div>
-    
+
                 <div class="membership">
                     <img th:src="@{/letter-m.png}" alt="capital letter m" width=30 height=30 style="padding-right:20px;">
                     <p></p>Membership: Active</p>
@@ -293,7 +293,7 @@
                     <h2><b th:text="${bar.getBarName()}"></b></h2>
                     <p th:text="${bar.getDeal()}"></p>
                     <form method="get" th:action="@{removeDeal}">
-                        <button type="submit" name="id" th:value="${bar.id}" class="btn-primary">Remove</button></form>
+                        <button type="submit" name="barId" th:value="${bar.id}" class="btn-primary">Remove</button></form>
                 </div>
                 <button style="margin-left:50px; height:50px; margin-top: 100px;" th:onclick="|window.location.href ='@{/vendorDealUpload}'|">New Deal</button>
             </div>

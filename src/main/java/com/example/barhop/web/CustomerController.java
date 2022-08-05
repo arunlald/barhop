@@ -237,7 +237,7 @@ public class CustomerController {
     }
 
     @GetMapping(path = "/removeDeal")
-    public String removeDeal(Model model, @RequestParam(name = "id") long dealId, BindingResult bindingResult, ModelMap mm, HttpSession session) {
+    public String removeDeal(Model model, @RequestParam(name = "barId") long dealId, ModelMap mm) {
 
         barAndDealRepository.deleteById(dealId);
         model.addAttribute("listBarAndDeals", barAndDealRepository.findBarAndDealByBarOwnerMail(activeUserMail));

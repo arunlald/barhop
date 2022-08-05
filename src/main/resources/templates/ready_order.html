@@ -277,7 +277,7 @@
             <div class="ready_search">
                 <div class="people"> 
                     <img th:src="@{/users.png}" alt="picture of people" width=30 height=30 style="padding-right:20px;" >
-                    <p>3</p>
+                    <p th:text = "${tempOrder.getQuantity()}"></p>
                 </div>
                 <div class="city"> 
                     <img th:src="@{/map.png}" alt="pointer for the map" width=30 height=30 style="padding-right:20px;">

@@ -128,6 +128,7 @@ public class CustomerController {
                             tempOrder.setBar_list("");
                             tempOrder.setNumber_of_bars(0);
                             tempOrder.setDate(new Date());
+                            tempOrder.setQuantity(1);
 
                             model.addAttribute("tempOrder", tempOrder);
                             activeUserMail = mail;
@@ -181,6 +182,15 @@ public class CustomerController {
     @GetMapping(path = "/removeBar")
     public String removeBar(Model model,  ModelMap mm, @RequestParam(name = "bar") String bar) {
         tempOrder.removeBar(bar);
+        model.addAttribute("tempOrder", tempOrder);
+        model.addAttribute("listBarAndDeals", listBarAndDeals);
+        return "order";
+    }
+
+    @GetMapping(path = "/updateQuantity")
+    public String updateQuantity(Model model,  ModelMap mm, @RequestParam(name = "quantity") int quantity) {
+        tempOrder.setQuantity(quantity);
+        tempOrder.calcCost();
         model.addAttribute("tempOrder", tempOrder);
         model.addAttribute("listBarAndDeals", listBarAndDeals);
         return "order";

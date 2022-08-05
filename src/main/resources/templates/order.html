@@ -278,7 +278,12 @@
             <h2><b>Browse Bars Deals</b></h2>
 
             <div class="search">
-                <div class="people"> <img th:src="@{/users.png}" alt="picture of people" width=30 height=30 ></div>
+                <div class="people">
+                    <img th:src="@{/users.png}" alt="picture of people" width=30 height=30 >
+                    <form method="get" th:action="@{updateQuantity}"><input type="number" name="quantity" th:value="${tempOrder.getQuantity()}">
+                        <button type="submit" class="btn-primary">Update Number of People</button></form>
+                </div>
+
                 <div class="city">
                     <img th:src="@{/map.png}" alt="pointer for the map" width=30 height=30 >
                     <form method="get" th:action="@{searchCity}"><label>City</label> <input type="text" name="city">

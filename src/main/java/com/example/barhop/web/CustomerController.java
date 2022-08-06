@@ -213,10 +213,17 @@ public class CustomerController {
     @GetMapping(path = "/checkout")
     public String checkout(Model model,  ModelMap mm) {
 
-        orderListRepository.save(tempOrder);
-        model.addAttribute("tempOrder", tempOrder);
-        model.addAttribute("listBarAndDeals", getBar());
-        return "ready_order";
+        if(tempOrder.getNumber_of_bars()>=2){
+            orderListRepository.save(tempOrder);
+            model.addAttribute("tempOrder", tempOrder);
+            model.addAttribute("listBarAndDeals", getBar());
+            return "ready_order";
+        }else {
+            model.addAttribute("tempOrder", tempOrder);
+            model.addAttribute("listBarAndDeals", listBarAndDeals);
+            return "order";
+        }
+
     }
 
     public List<BarAndDeal> getBar (){

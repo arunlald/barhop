@@ -260,7 +260,7 @@
           <h1><img th:src="@{/logo.png}" alt="Bunny with beer" width=50 height=50 >Barhop</h1>
         </div>
         <div class="header_partners">
-          <h3>Name<img th:src="@{/user.png}" alt="User image" width=80 height=40 >
+            <h3><h3 th:text="${ActiveCustomer.first_name}"></h3><img th:src="@{/user.png}" alt="User image" width=80 height=40 >
             <img th:src="@{/cart2.png}" alt="Cart" width=45 height=40 ></h3>
         </div>
       </header>

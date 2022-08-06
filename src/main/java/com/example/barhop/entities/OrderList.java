@@ -20,6 +20,11 @@ import javax.persistence.*;
 @Entity
 public class OrderList {
 
+    public OrderList(int number_of_bars, int quantity) {
+        this.number_of_bars = number_of_bars;
+        this.quantity = quantity;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

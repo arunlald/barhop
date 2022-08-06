@@ -77,7 +77,8 @@ public class CustomerController {
         } else {
 
             customerRepository.save(customer);
-            return "redirect:index";
+            model.addAttribute("SignUpMessage", "You have signed up successfully, You can log in now.");
+            return "index";
         }
     }
 
@@ -95,7 +96,8 @@ public class CustomerController {
         } else {
 
             vendorRepository.save(vendor);
-            return "redirect:index";
+            model.addAttribute("SignUpMessage", "You have signed up successfully, You can log in now.");
+            return "index";
         }
     }
 

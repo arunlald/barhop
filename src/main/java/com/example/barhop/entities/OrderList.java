@@ -27,6 +27,11 @@ public class OrderList {
 
     private String bar_list;
 
+    public OrderList(int number_of_bars) {
+        this.number_of_bars = number_of_bars;
+
+    }
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
@@ -35,7 +40,61 @@ public class OrderList {
 
     private int quantity;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getBar_list() {
+        return bar_list;
+    }
+
+    public void setBar_list(String bar_list) {
+        this.bar_list = bar_list;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getNumber_of_bars() {
+        return number_of_bars;
+    }
+
+    public void setNumber_of_bars(int number_of_bars) {
+        this.number_of_bars = number_of_bars;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public void calcCost(){
         if (this.number_of_bars>=2)

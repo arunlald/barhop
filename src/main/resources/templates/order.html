@@ -54,7 +54,7 @@
             width: 50%;
             color:white;
         }
-
+/*
         form {
             min-width: 200px;
             background-color: #ffffff;
@@ -65,7 +65,7 @@
             border-radius: 20px;
             text-align: center;
         }
-
+*/
         #mySignUp{
             width: 70%;
             background-color: rgb(61, 61, 200);
@@ -251,43 +251,68 @@
         #mySubmit {
             margin-left: 210px;
         }
+        .btn-primary2{
+            height: 25px;
+
+        }
+        .input1{
+            height: 25px;
+            margin-top: -5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .labelcity{
+            margin-top: -2px;
+            margin-left: -30px;
+        }
+        .imgmap{
+            margin-right: -125px;
+        }
+        .buttonUp{
+            display: inline-block;
+        }
+
 
     </style>
 </head>
 <body>
-    <div id="container">
-      <header>
+<div id="container">
+    <header>
         <div class="header1">
-          <h1><img th:src="@{/logo.png}" alt="Bunny with beer" width=50 height=50 >Barhop</h1>
+            <h1><img th:src="@{/logo.png}" alt="Bunny with beer" width=50 height=50 >Barhop</h1>
         </div>
         <div class="header_partners">
-          <h3><h3 th:text="${ActiveCustomer.first_name}"></h3><img th:src="@{/user.png}" alt="User image" width=80 height=40 >
-            <img th:src="@{/cart2.png}" alt="Cart" width=45 height=40 ></h3>
+            <h3><h3 th:text="${ActiveCustomer.first_name}"></h3><img th:src="@{/user.png}" alt="User image" width=80 height=40 >
+                <img th:src="@{/cart2.png}" alt="Cart" width=45 height=40 ></h3>
         </div>
-      </header>
-      <hr>
+    </header>
+    <hr>
 
-      <main>
+    <main>
         <div class="block_register">
-          <div class="main1"><h1>Your orders</h1>
-            <p>Use a map to find the closest location for you, or search for your favourite bars, and don't forget to choose a comfortable date!</p>
-            </div>        
+            <div class="main1"><h1>Your orders</h1>
+                <p>Use a map to find the closest location for you, or search for your favourite bars, and don't forget to choose a comfortable date!</p>
+            </div>
         </div>
-        
+
         <div class="orderblock">
             <h2><b>Browse Bars Deals</b></h2>
 
             <div class="search">
                 <div class="people">
                     <img th:src="@{/users.png}" alt="picture of people" width=30 height=30 >
-                    <form method="get" th:action="@{updateQuantity}"><input type="number" name="quantity" th:value="${tempOrder.getQuantity()}">
-                        <button type="submit" class="btn-primary">Update Number of People</button></form>
+                    <form method="get" th:action="@{updateQuantity}"><input class="input1" type="number" name="quantity" th:value="${tempOrder.getQuantity()}">
+                        <button type="submit" class="buttonUp" >Update Number of People</button></form>
+
                 </div>
 
                 <div class="city">
-                    <img th:src="@{/map.png}" alt="pointer for the map" width=30 height=30 >
-                    <form method="get" th:action="@{searchCity}"><label>City</label> <input type="text" name="city">
-                        <button type="submit" class="btn-primary">Search</button></form>
+                    <img th:src="@{/map.png}" class="imgmap" alt="pointer for the map" width=30 height=30 >
+                    <form method="get" th:action="@{searchCity}"><label class="labelcity">City</label> <input class="input1" type="text" name="city">
+                        <button type="submit" class="btn-primary2">Search</button></form>
+
                 </div>
 
             </div>
@@ -302,20 +327,20 @@
                     <p th:text="${bar.getAddress()}"></p>
                     <form method="get" th:action="@{addBar}">
                         <button type="submit" name="bar" th:value="${bar.getBarName()}" class="btn-primary">Add</button></form>
-                    <form method="get" th:action="@{removeBar}">
+                    <form style="margin-top: 5px" method="get" th:action="@{removeBar}">
                         <button type="submit" name="bar" th:value="${bar.getBarName()}" class="btn-primary">Remove</button></form>
                 </div>
             </div>
- 
+
         </div>
 
         <div class="bottomblock">
-          <div class="title">Total: $<b id="total" th:text="${tempOrder.getCost()}"></b></div>
+            <div class="title">Total: $<b id="total" th:text="${tempOrder.getCost()}"></b></div>
             <form method="get" th:action="@{checkout}">
                 <button type="submit" name="bar" class="btn-primary">Checkout</button></form>
         </div>
     </main>
-    
-    </div>
+
+</div>
 </body>
 </html>

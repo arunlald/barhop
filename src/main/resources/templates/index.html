@@ -276,7 +276,7 @@
             <div class="main2">
               <form method="get" th:action="@{/login}">
                 <h2 style="text-align: center;">Sign In & Browse Bar Deals</h2>
-                <h4 style="color: crimson; font-weight: normal" th:text="${loginMessage}"></h4>
+                <h4 style="color: green; font-weight: normal" th:text="${SignUpMessage}"></h4>
                 <hr>
     
                 <label>E-mail:</label>
@@ -291,8 +291,10 @@
                   <option value="vendor">Vendor</option>
                 </select>
                 <br>
-
+                <h4 style="color: crimson; font-weight: normal" th:text="${loginMessage}"></h4>
+                <br>
                 <button id="myLogIn" type="submit" value="Log in">Log in</button>
+
                 <hr>
                 <label style="align-self: center">or</label>
                 <hr>
